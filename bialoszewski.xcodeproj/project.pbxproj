@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04031B90197C4D9700A33B8C /* AVFoundation.framework */; };
+		04031B93197C514C00A33B8C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04031B92197C514C00A33B8C /* RecordViewController.swift */; };
 		0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */; };
-		0437E6C6197C4B6E00C0BFEB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6C5197C4B6E00C0BFEB /* RecordViewController.swift */; };
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
 		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
@@ -27,10 +27,10 @@
 
 /* Begin PBXFileReference section */
 		04031B90197C4D9700A33B8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		04031B92197C514C00A33B8C /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		0437E6BE197C4B6E00C0BFEB /* bialoszewski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bialoszewski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6C2197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0437E6C5197C4B6E00C0BFEB /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		0437E6C8197C4B6E00C0BFEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0437E6CA197C4B6E00C0BFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0437E6D0197C4B6E00C0BFEB /* bialoszewskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bialoszewskiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */,
-				0437E6C5197C4B6E00C0BFEB /* RecordViewController.swift */,
+				04031B92197C514C00A33B8C /* RecordViewController.swift */,
 				0437E6C7197C4B6E00C0BFEB /* Main.storyboard */,
 				0437E6CA197C4B6E00C0BFEB /* Images.xcassets */,
 				0437E6C1197C4B6E00C0BFEB /* Supporting Files */,
@@ -212,8 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0437E6C6197C4B6E00C0BFEB /* RecordViewController.swift in Sources */,
 				0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */,
+				04031B93197C514C00A33B8C /* RecordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

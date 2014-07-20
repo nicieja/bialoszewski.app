@@ -46,6 +46,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NXJ-L0-kvd" secondAttribute="bottom" constant="91" id="ybk-Lb-cqe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="Y2w-AS-ASb" id="WPF-5o-veP"/>
+                        <outlet property="recordButton" destination="dZ0-qc-e0W" id="108-SD-0re"/>
+                        <outlet property="saveButton" destination="NXJ-L0-kvd" id="ECL-EN-hP1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
