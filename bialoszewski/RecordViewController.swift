@@ -26,24 +26,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playButton.enabled = false
         saveButton.enabled = false
         
-        var emitError: NSError? = nil
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         
+        recorder = AVAudioRecorder(URL: setOutputFileURL(), settings: setRecordSettings(), error: nil)
+        recorder.delegate = self;
+        recorder.meteringEnabled = true;
+        recorder.prepareToRecord()
+    }
+    
+    func setOutputFileURL() -> NSURL {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var pathComponents = [paths.lastObject, "file.m4a"]
         var outputFileURL: NSURL = NSURL.fileURLWithPathComponents(pathComponents)
-        
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-        
+        return outputFileURL
+    }
+    
+    func setRecordSettings() -> NSMutableDictionary {
         let recordSetting: NSMutableDictionary = NSMutableDictionary()
         
         recordSetting.setValue(kAudioFormatMPEG4AAC, forKey: AVFormatIDKey)
         recordSetting.setValue(44100.0, forKey:AVSampleRateKey)
         recordSetting.setValue(2, forKey:AVNumberOfChannelsKey)
         
-        recorder = AVAudioRecorder(URL: outputFileURL, settings: recordSetting, error: nil)
-        recorder.delegate = self;
-        recorder.meteringEnabled = true;
-        recorder.prepareToRecord()
+        return recordSetting
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,13 +62,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         if !recorder.recording {
             session.setActive(true, error: nil)
-        
             recorder.record()
+            
             recordButton.setTitle("Pause", forState: UIControlState.Normal)
         } else {
             session.setActive(false, error: nil)
             recorder.stop()
-
             recordButton.setTitle(nil, forState: UIControlState.Normal)
             
             playButton.enabled = true
@@ -72,16 +76,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func playTapped(sender: UIButton) {
-        if !recorder.recording {            
+        if !recorder.recording {
             if player.playing {
                 player.stop()
+                
                 playButton.setTitle("Play", forState: UIControlState.Normal)
             } else {
                 player.prepareToPlay()
-                
-                playButton.setTitle("Pause", forState: UIControlState.Normal)
                 player.delegate = self
                 player.play()
+                
+                playButton.setTitle("Pause", forState: UIControlState.Normal)
             }
         }
     }
