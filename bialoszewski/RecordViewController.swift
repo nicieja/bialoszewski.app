@@ -15,6 +15,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBOutlet var playButton: UIButton
     @IBOutlet var saveButton: UIButton
     
+    var recorder: AVAudioRecorder!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         recordSetting.setValue(44100.0, forKey:AVSampleRateKey)
         recordSetting.setValue(2, forKey:AVNumberOfChannelsKey)
         
-        let recorder: AVAudioRecorder = AVAudioRecorder(URL: outputFileURL, settings: recordSetting, error: nil)
+        recorder = AVAudioRecorder(URL: outputFileURL, settings: recordSetting, error: nil)
         recorder.delegate = self;
         recorder.meteringEnabled = true;
         recorder.prepareToRecord()
@@ -44,6 +46,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func recordButtonTapped(sender: AnyObject) {
+        if !recorder.recording {
+            let session: AVAudioSession = AVAudioSession.sharedInstance()
+            session.setActive(true, error: nil)
+        
+            recorder.record()
+            recordButton.setTitle("Pause", forState: UIControlState.Normal)
+        } else {
+            recorder.pause()
+            recordButton.setTitle(nil, forState: UIControlState.Normal)
+            
+            playButton.enabled = true
+            saveButton.enabled = true
+        }
     }
 
 }
