@@ -17,34 +17,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ0-qc-e0W">
-                                <rect key="frame" x="20" y="359" width="50" height="30"/>
-                                <state key="normal" title="Record">
+                                <rect key="frame" x="203" y="336" width="75" height="75"/>
+                                <state key="normal" image="micro-75"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-L0-kvd">
+                                <rect key="frame" x="286" y="359" width="34" height="30"/>
+                                <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2w-AS-ASb">
-                                <rect key="frame" x="225" y="359" width="30" height="30"/>
+                                <rect key="frame" x="165" y="359" width="30" height="30"/>
                                 <state key="normal" title="Play">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXJ-L0-kvd">
-                                <rect key="frame" x="420" y="359" width="40" height="30"/>
-                                <state key="normal" title="Share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="69K-ub-Yek"/>
                             <constraint firstItem="dZ0-qc-e0W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8To-Rc-tZt"/>
                             <constraint firstAttribute="trailing" secondItem="NXJ-L0-kvd" secondAttribute="trailing" constant="20" id="GQX-GY-dHc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dZ0-qc-e0W" secondAttribute="bottom" constant="91" id="Pkf-AA-18T"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y2w-AS-ASb" secondAttribute="bottom" constant="91" id="UH5-tb-7A9"/>
+                            <constraint firstAttribute="trailing" secondItem="dZ0-qc-e0W" secondAttribute="trailing" constant="202" id="VWV-Jg-vlZ"/>
+                            <constraint firstItem="dZ0-qc-e0W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="203" id="cGR-7h-tXC"/>
+                            <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="165" id="duv-W7-CCi"/>
                             <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="225" id="hA2-zd-roU"/>
+                            <constraint firstAttribute="trailing" secondItem="NXJ-L0-kvd" secondAttribute="trailing" constant="160" id="t0g-46-FNu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dZ0-qc-e0W" secondAttribute="bottom" constant="69" id="umQ-Bp-8af"/>
                             <constraint firstAttribute="trailing" secondItem="Y2w-AS-ASb" secondAttribute="trailing" constant="225" id="wIT-y6-4NQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NXJ-L0-kvd" secondAttribute="bottom" constant="91" id="ybk-Lb-cqe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8To-Rc-tZt"/>
+                                <exclude reference="69K-ub-Yek"/>
+                                <exclude reference="hA2-zd-roU"/>
+                                <exclude reference="wIT-y6-4NQ"/>
+                                <exclude reference="GQX-GY-dHc"/>
+                                <exclude reference="Pkf-AA-18T"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="Y2w-AS-ASb" id="WPF-5o-veP"/>
@@ -56,4 +70,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="micro-75" width="75" height="75"/>
+    </resources>
 </document>
