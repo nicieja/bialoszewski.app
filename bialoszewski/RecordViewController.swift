@@ -19,7 +19,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     var recorder: AVAudioRecorder!
     var player: AVAudioPlayer!
     
+    var currentTime = Int()
+    
     let session: AVAudioSession = AVAudioSession.sharedInstance()
+    
+    let timeFormat: String = "%02d:%02d"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +74,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             recorder.record()
             
             recordButton.setTitle("Stop", forState: UIControlState.Normal)
+            timerLabel.text = NSString(format: timeFormat, 0, 0)
             startTimer()
         } else {
             session.setActive(false, error: nil)
@@ -83,12 +88,30 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func updateTimer() {
         if recorder.recording {
-            var minutes: Int = Int(recorder.currentTime / 60)
-            var seconds: Int = Int(recorder.currentTime) - (minutes * 60)
-        
-            var time = NSString(format: "%02d:%02d", minutes, seconds)
-            timerLabel.text = time;
+            currentTime = Int(recorder.currentTime)
+        } else if player.playing {
+            currentTime = Int(player.duration - player.currentTime)
         }
+        
+        if player?.playing == false {
+            currentTime = Int(player.duration)
+        }
+    
+        var time = calculateTimeAndMinutes(currentTime)
+        var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
+        timerLabel.text = label
+    }
+    
+    func calculateTimeAndMinutes(time: Int) -> Dictionary<String, Int> {
+        var minutes: Int = time / 60
+        var seconds: Int = time - (minutes * 60)
+        
+        var timeObject = [
+            "minutes": minutes,
+            "seconds": seconds
+        ]
+        
+        return timeObject
     }
     
     @IBAction func playTapped(sender: UIButton) {
