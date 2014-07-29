@@ -13,6 +13,7 @@
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
 		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
+		0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0486B21419884FAB00D97C87 /* DropboxSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,10 +33,11 @@
 		0437E6C2197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0437E6C8197C4B6E00C0BFEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0437E6CA197C4B6E00C0BFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0437E6CA197C4B6E00C0BFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bialoszewski/Images.xcassets; sourceTree = "<group>"; };
 		0437E6D0197C4B6E00C0BFEB /* bialoszewskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bialoszewskiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6D5197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bialoszewskiTests.swift; sourceTree = "<group>"; };
+		0486B21419884FAB00D97C87 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "../../Downloads/dropbox-ios-sdk-1.3.11/DropboxSDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */,
 				04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,9 +63,10 @@
 		0437E6B5197C4B6E00C0BFEB = {
 			isa = PBXGroup;
 			children = (
-				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
-				0437E6C0197C4B6E00C0BFEB /* bialoszewski */,
-				0437E6D3197C4B6E00C0BFEB /* bialoszewskiTests */,
+				0486B21719884FDF00D97C87 /* Assets */,
+				0486B21619884FB200D97C87 /* Frameworks */,
+				0437E6C0197C4B6E00C0BFEB /* Classes */,
+				0437E6D3197C4B6E00C0BFEB /* Tests */,
 				0437E6BF197C4B6E00C0BFEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,15 +80,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0437E6C0197C4B6E00C0BFEB /* bialoszewski */ = {
+		0437E6C0197C4B6E00C0BFEB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */,
 				04031B92197C514C00A33B8C /* RecordViewController.swift */,
 				0437E6C7197C4B6E00C0BFEB /* Main.storyboard */,
-				0437E6CA197C4B6E00C0BFEB /* Images.xcassets */,
 				0437E6C1197C4B6E00C0BFEB /* Supporting Files */,
 			);
+			name = Classes;
 			path = bialoszewski;
 			sourceTree = "<group>";
 		};
@@ -96,12 +100,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0437E6D3197C4B6E00C0BFEB /* bialoszewskiTests */ = {
+		0437E6D3197C4B6E00C0BFEB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */,
 				0437E6D4197C4B6E00C0BFEB /* Supporting Files */,
 			);
+			name = Tests;
 			path = bialoszewskiTests;
 			sourceTree = "<group>";
 		};
@@ -111,6 +116,23 @@
 				0437E6D5197C4B6E00C0BFEB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0486B21619884FB200D97C87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0486B21419884FAB00D97C87 /* DropboxSDK.framework */,
+				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0486B21719884FDF00D97C87 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0437E6CA197C4B6E00C0BFEB /* Images.xcassets */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +353,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
+				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -342,6 +368,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
+				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
