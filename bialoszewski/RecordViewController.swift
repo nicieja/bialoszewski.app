@@ -14,6 +14,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBOutlet var recordButton: UIButton
     @IBOutlet var playButton: UIButton
     @IBOutlet var saveButton: UIButton
+    @IBOutlet var timerLabel: UILabel
     
     var recorder: AVAudioRecorder!
     var player: AVAudioPlayer!
@@ -55,6 +56,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         super.didReceiveMemoryWarning()
     }
     
+    func startTimer() {
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+    }
+    
     @IBAction func recordButtonTapped(sender: AnyObject) {
         if player?.playing {
             player.stop()
@@ -64,7 +69,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             session.setActive(true, error: nil)
             recorder.record()
             
-            recordButton.setTitle("Pause", forState: UIControlState.Normal)
+            recordButton.setTitle("Stop", forState: UIControlState.Normal)
+            startTimer()
         } else {
             session.setActive(false, error: nil)
             recorder.stop()
@@ -72,6 +78,16 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             
             playButton.enabled = true
             saveButton.enabled = true
+        }
+    }
+    
+    func updateTimer() {
+        if recorder.recording {
+            var minutes: Int = Int(recorder.currentTime / 60)
+            var seconds: Int = Int(recorder.currentTime) - (minutes * 60)
+        
+            var time = NSString(format: "%02d:%02d", minutes, seconds)
+            timerLabel.text = time;
         }
     }
     
@@ -85,6 +101,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 player.prepareToPlay()
                 player.delegate = self
                 player.play()
+                
+                startTimer()
                 
                 playButton.setTitle("Pause", forState: UIControlState.Normal)
             }

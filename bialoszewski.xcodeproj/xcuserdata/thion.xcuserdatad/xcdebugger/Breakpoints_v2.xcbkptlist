@@ -24,7 +24,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428276151.398182"
+            timestampString = "428358395.170849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bialoszewski/RecordViewController.swift"
+            timestampString = "428358395.170849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -40,27 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428276151.398182"
+            timestampString = "428359484.886747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428276151.398182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "recordButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>

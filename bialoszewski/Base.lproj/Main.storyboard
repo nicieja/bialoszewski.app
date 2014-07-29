@@ -38,18 +38,30 @@
                                     <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ifT-3L-TiK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ah-UD-sr8">
+                                <rect key="frame" x="146" y="171" width="189" height="138"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="145"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3Ah-UD-sr8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="1dA-8w-iBt"/>
                             <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="69K-ub-Yek"/>
                             <constraint firstItem="dZ0-qc-e0W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8To-Rc-tZt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Ah-UD-sr8" secondAttribute="bottom" constant="171" id="9tG-LY-lx8"/>
                             <constraint firstAttribute="trailing" secondItem="NXJ-L0-kvd" secondAttribute="trailing" constant="20" id="GQX-GY-dHc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dZ0-qc-e0W" secondAttribute="bottom" constant="91" id="Pkf-AA-18T"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y2w-AS-ASb" secondAttribute="bottom" constant="91" id="UH5-tb-7A9"/>
                             <constraint firstAttribute="trailing" secondItem="dZ0-qc-e0W" secondAttribute="trailing" constant="202" id="VWV-Jg-vlZ"/>
                             <constraint firstItem="dZ0-qc-e0W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="203" id="cGR-7h-tXC"/>
                             <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="165" id="duv-W7-CCi"/>
+                            <constraint firstAttribute="centerX" secondItem="3Ah-UD-sr8" secondAttribute="centerX" constant="-0.5" id="fPd-ew-5oU"/>
                             <constraint firstItem="Y2w-AS-ASb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="225" id="hA2-zd-roU"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ah-UD-sr8" secondAttribute="trailing" constant="145" id="hbI-Oh-mAv"/>
+                            <constraint firstAttribute="centerY" secondItem="3Ah-UD-sr8" secondAttribute="centerY" id="it2-2u-z9C"/>
+                            <constraint firstItem="3Ah-UD-sr8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="146" id="l27-bV-wdY"/>
                             <constraint firstAttribute="trailing" secondItem="NXJ-L0-kvd" secondAttribute="trailing" constant="160" id="t0g-46-FNu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dZ0-qc-e0W" secondAttribute="bottom" constant="69" id="umQ-Bp-8af"/>
                             <constraint firstAttribute="trailing" secondItem="Y2w-AS-ASb" secondAttribute="trailing" constant="225" id="wIT-y6-4NQ"/>
@@ -57,11 +69,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="1dA-8w-iBt"/>
+                                <exclude reference="hbI-Oh-mAv"/>
+                                <exclude reference="l27-bV-wdY"/>
                                 <exclude reference="8To-Rc-tZt"/>
                                 <exclude reference="69K-ub-Yek"/>
                                 <exclude reference="hA2-zd-roU"/>
                                 <exclude reference="wIT-y6-4NQ"/>
                                 <exclude reference="GQX-GY-dHc"/>
+                                <exclude reference="9tG-LY-lx8"/>
                                 <exclude reference="Pkf-AA-18T"/>
                             </mask>
                         </variation>
@@ -70,10 +86,12 @@
                         <outlet property="playButton" destination="Y2w-AS-ASb" id="WPF-5o-veP"/>
                         <outlet property="recordButton" destination="dZ0-qc-e0W" id="108-SD-0re"/>
                         <outlet property="saveButton" destination="NXJ-L0-kvd" id="ECL-EN-hP1"/>
+                        <outlet property="timerLabel" destination="3Ah-UD-sr8" id="Jz4-6M-EsJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="551" y="337"/>
         </scene>
     </scenes>
     <resources>
