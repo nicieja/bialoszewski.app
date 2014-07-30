@@ -14,6 +14,9 @@
 		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
 		0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0486B21419884FAB00D97C87 /* DropboxSDK.framework */; };
+		048B9F401988C7E1006F97DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B9F3F1988C7E1006F97DC /* Foundation.framework */; };
+		04C8D8251988C6F8006F7BE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C8D8241988C6F8006F7BE6 /* CoreGraphics.framework */; };
+		04C8D8271988C740006F7BE6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C8D8261988C740006F7BE6 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,10 @@
 		0437E6D5197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bialoszewskiTests.swift; sourceTree = "<group>"; };
 		0486B21419884FAB00D97C87 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "../../Downloads/dropbox-ios-sdk-1.3.11/DropboxSDK.framework"; sourceTree = "<group>"; };
+		0486B218198850DE00D97C87 /* bialoszewski-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bialoszewski-Bridging-Header.h"; sourceTree = "<group>"; };
+		048B9F3F1988C7E1006F97DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04C8D8241988C6F8006F7BE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		04C8D8261988C740006F7BE6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048B9F401988C7E1006F97DC /* Foundation.framework in Frameworks */,
+				04C8D8271988C740006F7BE6 /* Security.framework in Frameworks */,
+				04C8D8251988C6F8006F7BE6 /* CoreGraphics.framework in Frameworks */,
 				0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */,
 				04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */,
 			);
@@ -87,6 +97,7 @@
 				04031B92197C514C00A33B8C /* RecordViewController.swift */,
 				0437E6C7197C4B6E00C0BFEB /* Main.storyboard */,
 				0437E6C1197C4B6E00C0BFEB /* Supporting Files */,
+				0486B218198850DE00D97C87 /* bialoszewski-Bridging-Header.h */,
 			);
 			name = Classes;
 			path = bialoszewski;
@@ -121,6 +132,9 @@
 		0486B21619884FB200D97C87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				048B9F3F1988C7E1006F97DC /* Foundation.framework */,
+				04C8D8261988C740006F7BE6 /* Security.framework */,
+				04C8D8241988C6F8006F7BE6 /* CoreGraphics.framework */,
 				0486B21419884FAB00D97C87 /* DropboxSDK.framework */,
 				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
 			);
@@ -353,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
@@ -360,6 +375,8 @@
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -368,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
@@ -375,6 +393,7 @@
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
 			};
 			name = Release;
 		};
