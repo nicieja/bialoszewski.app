@@ -10,6 +10,7 @@
 		04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04031B90197C4D9700A33B8C /* AVFoundation.framework */; };
 		04031B93197C514C00A33B8C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04031B92197C514C00A33B8C /* RecordViewController.swift */; };
 		04129841198D86DA00BDEDAD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04129840198D86DA00BDEDAD /* Info.plist */; };
+		04129849198D997F00BDEDAD /* DropboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04129848198D997F00BDEDAD /* DropboxService.swift */; };
 		0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */; };
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
 		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
@@ -21,6 +22,9 @@
 		045A5698198D38B800F4BC95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5697198D38B800F4BC95 /* QuartzCore.framework */; };
 		045A569A198D38CD00F4BC95 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5699198D38CD00F4BC95 /* libc++.dylib */; };
 		045A569C198D38D700F4BC95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A569B198D38D700F4BC95 /* libz.dylib */; };
+		048FE926198D9E8000E208EB /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE925198D9E8000E208EB /* ErrorService.swift */; };
+		048FE928198DA10B00E208EB /* RecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE927198DA10B00E208EB /* RecorderService.swift */; };
+		048FE92A198DA6FE00E208EB /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE929198DA6FE00E208EB /* PlayerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 		04031B90197C4D9700A33B8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		04031B92197C514C00A33B8C /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		04129840198D86DA00BDEDAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04129848198D997F00BDEDAD /* DropboxService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxService.swift; sourceTree = "<group>"; };
 		0437E6BE197C4B6E00C0BFEB /* bialoszewski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bialoszewski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0437E6C8197C4B6E00C0BFEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +57,9 @@
 		045A5697198D38B800F4BC95 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		045A5699198D38CD00F4BC95 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		045A569B198D38D700F4BC95 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		048FE925198D9E8000E208EB /* ErrorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
+		048FE927198DA10B00E208EB /* RecorderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderService.swift; sourceTree = "<group>"; };
+		048FE929198DA6FE00E208EB /* PlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,17 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		04129847198D996700BDEDAD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04129848198D997F00BDEDAD /* DropboxService.swift */,
+				048FE927198DA10B00E208EB /* RecorderService.swift */,
+				048FE929198DA6FE00E208EB /* PlayerService.swift */,
+				048FE925198D9E8000E208EB /* ErrorService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		0437E6B5197C4B6E00C0BFEB = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +130,7 @@
 		0437E6C0197C4B6E00C0BFEB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				04129847198D996700BDEDAD /* Services */,
 				04129846198D898600BDEDAD /* Controllers */,
 				0437E6C1197C4B6E00C0BFEB /* Others */,
 			);
@@ -270,6 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048FE92A198DA6FE00E208EB /* PlayerService.swift in Sources */,
+				048FE928198DA10B00E208EB /* RecorderService.swift in Sources */,
+				048FE926198D9E8000E208EB /* ErrorService.swift in Sources */,
+				04129849198D997F00BDEDAD /* DropboxService.swift in Sources */,
 				0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */,
 				04031B93197C514C00A33B8C /* RecordViewController.swift in Sources */,
 			);
