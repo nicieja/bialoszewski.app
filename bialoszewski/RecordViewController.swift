@@ -118,7 +118,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         timerLabel.text = label
     }
     
-    func calculateTimeAndMinutes(time: Int) -> Dictionary<String, Int> {
+    func calculateTimeAndMinutes(time: Int) -> [String: Int] {
         var minutes: Int = time / 60
         var seconds: Int = time - (minutes * 60)
         
