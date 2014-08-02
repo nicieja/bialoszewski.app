@@ -11,10 +11,10 @@ import AVFoundation
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
-    @IBOutlet var recordButton: UIButton
-    @IBOutlet var playButton: UIButton
-    @IBOutlet var saveButton: UIButton
-    @IBOutlet var timerLabel: UILabel
+    @IBOutlet var recordButton: UIButton!
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var timerLabel: UILabel!
     
     var recorder: AVAudioRecorder!
     var player: AVAudioPlayer!
