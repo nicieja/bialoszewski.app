@@ -13,12 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
     
-    let secret: String = ""
-    let key: String = ""
+    let info: NSDictionary = NSBundle.mainBundle().infoDictionary
     
     let storyboard: UIStoryboard = UIStoryboard()
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+        let secret: String = info.objectForKey("Dropbox App Secret") as String
+        let key: String = info.objectForKey("Dropbox App Key") as String
+
         let accountManager:DBAccountManager = DBAccountManager(appKey: key, secret: secret)
         DBAccountManager.setSharedManager(accountManager)
 
