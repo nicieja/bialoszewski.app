@@ -82,6 +82,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="px8-55-8ro"/>
                     <connections>
                         <outlet property="playButton" destination="Y2w-AS-ASb" id="WPF-5o-veP"/>
                         <outlet property="recordButton" destination="dZ0-qc-e0W" id="108-SD-0re"/>
@@ -91,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="337"/>
+            <point key="canvasLocation" x="749" y="352"/>
         </scene>
     </scenes>
     <resources>

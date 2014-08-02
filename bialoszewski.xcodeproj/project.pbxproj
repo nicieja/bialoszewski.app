@@ -13,7 +13,13 @@
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
 		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
-		0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0486B21419884FAB00D97C87 /* DropboxSDK.framework */; };
+		045A568C198D375300F4BC95 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A568B198D375300F4BC95 /* Dropbox.framework */; };
+		045A5692198D386D00F4BC95 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5691198D386D00F4BC95 /* CFNetwork.framework */; };
+		045A5694198D388000F4BC95 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5693198D388000F4BC95 /* Security.framework */; };
+		045A5696198D389900F4BC95 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5695198D389900F4BC95 /* SystemConfiguration.framework */; };
+		045A5698198D38B800F4BC95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5697198D38B800F4BC95 /* QuartzCore.framework */; };
+		045A569A198D38CD00F4BC95 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5699198D38CD00F4BC95 /* libc++.dylib */; };
+		045A569C198D38D700F4BC95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A569B198D38D700F4BC95 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +43,14 @@
 		0437E6D0197C4B6E00C0BFEB /* bialoszewskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bialoszewskiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6D5197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bialoszewskiTests.swift; sourceTree = "<group>"; };
-		0486B21419884FAB00D97C87 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = "../../Downloads/dropbox-ios-sdk-1.3.11/DropboxSDK.framework"; sourceTree = "<group>"; };
+		045A568B198D375300F4BC95 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = "../../Downloads/dropbox-ios-sync-sdk-3.0.1/Dropbox.framework"; sourceTree = "<group>"; };
+		045A568E198D383200F4BC95 /* bialoszewski-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bialoszewski-Bridging-Header.h"; sourceTree = "<group>"; };
+		045A5691198D386D00F4BC95 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		045A5693198D388000F4BC95 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		045A5695198D389900F4BC95 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		045A5697198D38B800F4BC95 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		045A5699198D38CD00F4BC95 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		045A569B198D38D700F4BC95 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +58,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0486B21519884FAB00D97C87 /* DropboxSDK.framework in Frameworks */,
+				045A569C198D38D700F4BC95 /* libz.dylib in Frameworks */,
+				045A569A198D38CD00F4BC95 /* libc++.dylib in Frameworks */,
+				045A5698198D38B800F4BC95 /* QuartzCore.framework in Frameworks */,
+				045A5696198D389900F4BC95 /* SystemConfiguration.framework in Frameworks */,
+				045A5694198D388000F4BC95 /* Security.framework in Frameworks */,
+				045A5692198D386D00F4BC95 /* CFNetwork.framework in Frameworks */,
 				04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */,
+				045A568C198D375300F4BC95 /* Dropbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +114,7 @@
 		0437E6C1197C4B6E00C0BFEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				045A568E198D383200F4BC95 /* bialoszewski-Bridging-Header.h */,
 				0437E6C2197C4B6E00C0BFEB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -121,7 +141,13 @@
 		0486B21619884FB200D97C87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0486B21419884FAB00D97C87 /* DropboxSDK.framework */,
+				045A569B198D38D700F4BC95 /* libz.dylib */,
+				045A5699198D38CD00F4BC95 /* libc++.dylib */,
+				045A5697198D38B800F4BC95 /* QuartzCore.framework */,
+				045A5695198D389900F4BC95 /* SystemConfiguration.framework */,
+				045A5693198D388000F4BC95 /* Security.framework */,
+				045A5691198D386D00F4BC95 /* CFNetwork.framework */,
+				045A568B198D375300F4BC95 /* Dropbox.framework */,
 				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -353,13 +379,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
+					"/Users/thion/Downloads/dropbox-ios-sync-sdk-3.0.1",
 				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -368,13 +398,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
+					"/Users/thion/Downloads/dropbox-ios-sync-sdk-3.0.1",
 				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
 			};
 			name = Release;
 		};

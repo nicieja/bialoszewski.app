@@ -39,6 +39,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         recorder.prepareToRecord()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if !DBAccountManager.sharedManager().linkedAccount {
+            DBAccountManager.sharedManager().linkFromController(self)
+        }
+    }
+    
     func setOutputFileURL() -> NSURL {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var pathComponents = [paths.lastObject, "file.m4a"]
