@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication!, openURL url: NSURL!, sourceApplication source: NSString!, annotation: AnyObject!) -> Bool {
         if let account: DBAccount = DBAccountManager.sharedManager().handleOpenURL(url) {
+            let filesystem: DBFilesystem = DBFilesystem(account: account)
+            DBFilesystem.setSharedFilesystem(filesystem)
             return true
         }
         

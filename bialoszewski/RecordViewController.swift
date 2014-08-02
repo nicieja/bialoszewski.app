@@ -19,9 +19,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     var recorder: AVAudioRecorder!
     var player: AVAudioPlayer!
     
+    var outputFileURL: NSURL!
     var currentTime = Int()
     
     let session: AVAudioSession = AVAudioSession.sharedInstance()
+    
+    var filesystem: DBFilesystem!
     
     let timeFormat: String = "%02d:%02d"
     
@@ -42,13 +45,20 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     override func viewDidAppear(animated: Bool) {
         if !DBAccountManager.sharedManager().linkedAccount {
             DBAccountManager.sharedManager().linkFromController(self)
+        } else {
+            setupDropboxFilesystem()
         }
+    }
+    
+    func setupDropboxFilesystem() {
+        filesystem = DBFilesystem(account: DBAccountManager.sharedManager().linkedAccount)
+        DBFilesystem.setSharedFilesystem(filesystem)
     }
     
     func setOutputFileURL() -> NSURL {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var pathComponents = [paths.lastObject, "file.m4a"]
-        var outputFileURL: NSURL = NSURL.fileURLWithPathComponents(pathComponents)
+        self.outputFileURL = NSURL.fileURLWithPathComponents(pathComponents)
         return outputFileURL
     }
     
@@ -145,5 +155,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
         player = AVAudioPlayer(contentsOfURL: recorder.url, error: nil)
     }
+    
+    // TODO: move to a background job
+    @IBAction func saveToDropbox(sender: UIButton) {
+        var newPath: DBPath = DBPath.root().childPath("file.m4a")
+        var path: String = outputFileURL.path
+        var file: DBFile!
+        
+        if var info: DBFileInfo = filesystem.fileInfoForPath(newPath, error: nil) {
+            file = filesystem.openFile(newPath, error: nil)
+        } else {
+            file = filesystem.createFile(newPath, error: nil)
+        }
+        
+        // shouldSteal temporarily set to false
+        file.writeContentsOfFile(path, shouldSteal: false, error: nil)
+        
+        var alert = UIAlertController(title: "Thanks!", message: "Your recording was saved.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        // TODO: reset app to the default state
+        saveButton.enabled = false
 
+    }
+    
 }
