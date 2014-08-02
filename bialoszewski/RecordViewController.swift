@@ -25,6 +25,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     let session: AVAudioSession = AVAudioSession.sharedInstance()
     
     var filesystem: DBFilesystem!
+    var dropboxError: DBError?
+    var systemError: NSError?
     
     let timeFormat: String = "%02d:%02d"
     
@@ -38,7 +40,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playButton.enabled = false
         saveButton.enabled = false
         
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &systemError)
+        
+        if systemError {
+            errorHandler("The session could not be initialized.")
+        }
         
         recorderSetup()
     }
@@ -59,7 +65,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func recorderSetup() {
         setFileName()
         
-        recorder = AVAudioRecorder(URL: setOutputFileURL(), settings: setRecordSettings(), error: nil)
+        recorder = AVAudioRecorder(URL: setOutputFileURL(), settings: setRecordSettings(), error: &systemError)
+        
+        if systemError {
+            errorHandler("The recorder could not be initialized.")
+        }
+        
         recorder.delegate = self;
         recorder.meteringEnabled = true;
         recorder.prepareToRecord()
@@ -110,20 +121,24 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
         
         if !recorder.recording {
-            session.setActive(true, error: nil)
+            session.setActive(true, error: &systemError)
             recorder.record()
             
             recordButton.setTitle("Stop", forState: UIControlState.Normal)
             timerLabel.text = NSString(format: timeFormat, 0, 0)
             startTimer()
         } else {
-            session.setActive(false, error: nil)
+            session.setActive(false, error: &systemError)
             recorder.stop()
             stopTimer()
             recordButton.setTitle(nil, forState: UIControlState.Normal)
             
             playButton.enabled = true
             saveButton.enabled = true
+        }
+        
+        if systemError {
+            errorHandler("The recording session could not be modified.")
         }
     }
     
@@ -181,7 +196,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
-        player = AVAudioPlayer(contentsOfURL: recorder.url, error: nil)
+        player = AVAudioPlayer(contentsOfURL: recorder.url, error: &systemError)
+        
+        if systemError {
+            errorHandler("Your recording could not be saved.")
+            recorderSetup()
+        }
     }
     
     @IBAction func saveToDropbox(sender: UIButton) {
@@ -189,23 +209,47 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         var path: String = outputFileURL.path
         var file: DBFile!
         
-        if var info: DBFileInfo = filesystem.fileInfoForPath(newPath, error: nil) {
-            file = filesystem.openFile(newPath, error: nil)
+        if var info: DBFileInfo = filesystem.fileInfoForPath(newPath, error: &dropboxError) {
+            file = filesystem.openFile(newPath, error: &dropboxError)
+            
+            if dropboxError {
+                errorHandler("The file could not be opened.")
+            }
         } else {
-            file = filesystem.createFile(newPath, error: nil)
+            file = filesystem.createFile(newPath, error: &dropboxError)
+            
+            if dropboxError {
+                errorHandler("The file could not be created.")
+            }
         }
         
-        file.writeContentsOfFile(path, shouldSteal: false, error: nil)
+        if dropboxError {
+            errorHandler("File info could not be retrieved.")
+        }
         
-        var alert = UIAlertController(title: "Thanks!", message: "Your recording was saved.", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        file.writeContentsOfFile(path, shouldSteal: false, error: &dropboxError)
+        
+        if dropboxError {
+            errorHandler("The file could not be saved.")
+        }
+        
+        alertHandler("Thanks!", message: "Your recording was saved.", ok: "Yay!")
         
         saveButton.enabled = false
         playButton.enabled = false
         timerLabel.text = ""
         
         recorderSetup()
+    }
+    
+    func errorHandler(message: String) {
+        alertHandler("Ups", message: message, ok: "Try again")
+    }
+    
+    func alertHandler(title: String, message: String, ok: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: ok, style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
