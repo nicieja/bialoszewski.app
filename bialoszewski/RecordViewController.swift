@@ -28,6 +28,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     let timeFormat: String = "%02d:%02d"
     
+    var fileName: String!
+    
+    var timer: NSTimer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +40,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         
-        recorder = AVAudioRecorder(URL: setOutputFileURL(), settings: setRecordSettings(), error: nil)
-        recorder.delegate = self;
-        recorder.meteringEnabled = true;
-        recorder.prepareToRecord()
+        recorderSetup()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,11 +56,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         DBFilesystem.setSharedFilesystem(filesystem)
     }
     
+    func recorderSetup() {
+        setFileName()
+        
+        recorder = AVAudioRecorder(URL: setOutputFileURL(), settings: setRecordSettings(), error: nil)
+        recorder.delegate = self;
+        recorder.meteringEnabled = true;
+        recorder.prepareToRecord()
+    }
+    
     func setOutputFileURL() -> NSURL {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var pathComponents = [paths.lastObject, "file.m4a"]
+        var pathComponents = [paths.lastObject, fileName]
         self.outputFileURL = NSURL.fileURLWithPathComponents(pathComponents)
         return outputFileURL
+    }
+    
+    func setFileName() {
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm:ss"
+        
+        var timestamp: NSDate = NSDate.date()
+        var formattedDateString: String = dateFormatter.stringFromDate(timestamp)
+        fileName = formattedDateString + ".m4a"
     }
     
     func setRecordSettings() -> NSMutableDictionary {
@@ -77,7 +96,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func startTimer() {
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        timer.invalidate()
+        timer = nil
     }
     
     @IBAction func recordButtonTapped(sender: AnyObject) {
@@ -95,6 +119,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         } else {
             session.setActive(false, error: nil)
             recorder.stop()
+            stopTimer()
             recordButton.setTitle(nil, forState: UIControlState.Normal)
             
             playButton.enabled = true
@@ -109,7 +134,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             currentTime = Int(player.duration - player.currentTime)
         }
         
-        if player?.playing == false {
+        // NOTE: hackish. When the player stops playing and the recorder is not
+        //       recording, set currentTime to the recording's duration
+        if player?.playing == false && recorder?.recording == false {
             currentTime = Int(player.duration)
         }
     
@@ -134,6 +161,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if !recorder.recording {
             if player.playing {
                 player.stop()
+                stopTimer()
                 
                 playButton.setTitle("Play", forState: UIControlState.Normal)
             } else {
@@ -156,9 +184,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         player = AVAudioPlayer(contentsOfURL: recorder.url, error: nil)
     }
     
-    // TODO: move to a background job
     @IBAction func saveToDropbox(sender: UIButton) {
-        var newPath: DBPath = DBPath.root().childPath("file.m4a")
+        var newPath: DBPath = DBPath.root().childPath(fileName)
         var path: String = outputFileURL.path
         var file: DBFile!
         
@@ -168,16 +195,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             file = filesystem.createFile(newPath, error: nil)
         }
         
-        // shouldSteal temporarily set to false
         file.writeContentsOfFile(path, shouldSteal: false, error: nil)
         
         var alert = UIAlertController(title: "Thanks!", message: "Your recording was saved.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
-        // TODO: reset app to the default state
         saveButton.enabled = false
-
+        playButton.enabled = false
+        timerLabel.text = ""
+        
+        recorderSetup()
     }
     
 }
