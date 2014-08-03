@@ -21,7 +21,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     var playerService: PlayerService!
     var handler: ErrorService!
     
-    var currentTime = Int()
+    var currentTime: Int!
     let timeFormat: String = "%02d:%02d"
     var timer: NSTimer!
     
@@ -87,25 +87,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func updateTimer() {
-        if recorderService.recorder.recording {
-            currentTime = Int(recorderService.recorder.currentTime)
-            
-            // too long recordings handler
-            if currentTime > maxRecordingTime {
-                stopRecording()
+        var label: NSString = ""
+        if recorderService.recorder.recording || playerService?.player.playing  {
+            if recorderService.recorder.recording {
+                currentTime = Int(recorderService.recorder.currentTime)
+                
+                // too long recordings handler
+                if currentTime > maxRecordingTime {
+                    stopRecording()
+                }
+            } else if playerService?.player.playing {
+                currentTime = Int(playerService.player.duration - playerService.player.currentTime)
             }
-        } else if playerService?.player.playing {
-            currentTime = Int(playerService.player.duration - playerService.player.currentTime)
+            
+            // NOTE: hackish. When the player stops playing and the recorder is not
+            //       recording, set currentTime to the recording's duration
+            if playerService?.player.playing == false && recorderService.recorder.recording == false {
+                currentTime = Int(playerService.player.duration)
+            }
+        
+            var time = calculateTimeAndMinutes(currentTime)
+            label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
         }
         
-        // NOTE: hackish. When the player stops playing and the recorder is not
-        //       recording, set currentTime to the recording's duration
-        if playerService?.player.playing == false && recorderService.recorder.recording == false {
-            currentTime = Int(playerService.player.duration)
-        }
-    
-        var time = calculateTimeAndMinutes(currentTime)
-        var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
         timerLabel.text = label
     }
     
@@ -167,8 +171,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
 
         saveButton.enabled = false
         playButton.enabled = false
-        timerLabel.text = ""
+        currentTime = nil
         
+        playerService = nil
         recorderService = RecorderService(ctrl: self)
     }
     
