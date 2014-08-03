@@ -72,9 +72,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func startRecording() {
         recorderService.record()
         
-        timerLabel.text = NSString(format: timeFormat, 0, 0)
-        timerLabel.hidden = false
-        reminderLabel.hidden = false
+        showTimer()
         recordButton.setTitle("Stop", forState: UIControlState.Normal)
         
         startTimer()
@@ -110,9 +108,20 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 currentTime = Int(playerService.player.duration)
             }
         
-            var time = calculateTimeAndMinutes(currentTime)
-            var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
-            timerLabel.text = label
+            if currentTime > 0 {
+                var time = calculateTimeAndMinutes(currentTime)
+                var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
+                timerLabel.text = label
+                
+                if currentTime > maxRecordingTime - 30 {
+                    transitionCrossDissolve({
+                        self.timerLabel.alpha = 0
+                        self.timerLabel.textColor = UIColor.redColor()
+                    }, {
+                        self.timerLabel.alpha = 1
+                    })
+                }
+            }
         }
     }
     
@@ -175,11 +184,41 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = false
         playButton.enabled = false
         currentTime = nil
-        timerLabel.hidden = true
-        reminderLabel.hidden = true
+        hideTimer()
         playerService = nil
         
         recorderService = RecorderService(ctrl: self)
     }
     
+    func hideTimer() {
+        fadeTimer(false)
+    }
+    
+    func showTimer() {
+        fadeTimer(true)
+    }
+    
+    func fadeTimer(show: Bool) {
+        transitionCrossDissolve({
+            self.reminderLabel.alpha = show ? 0 : 1
+            self.timerLabel.alpha = show ? 0 : 1
+            
+            if show {
+                self.timerLabel.text = NSString(format: self.timeFormat, 0, 0)
+            }
+            
+            self.timerLabel.textColor = UIColor.blackColor()
+            
+            self.reminderLabel.hidden = !show
+            self.timerLabel.hidden = !show
+        }, completion: {
+            finished in
+            self.reminderLabel.alpha = show ? 1 : 0
+            self.timerLabel.alpha = show ? 1 : 0
+        })
+    }
+    
+    func transitionCrossDissolve(animations: () -> (), completion: () -> ()) {
+        UIView.transitionWithView(self.view, duration: 0.2, options: .TransitionCrossDissolve, animations: animations, completion: { finished in completion() })
+    }
 }
