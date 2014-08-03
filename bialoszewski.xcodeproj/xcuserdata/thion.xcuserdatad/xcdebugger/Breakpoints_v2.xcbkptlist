@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428714446.393139"
+            timestampString = "428718406.726325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "recordButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428714869.132908"
+            timestampString = "428718406.726325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "calculateTimeAndMinutes(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428714869.132908"
+            timestampString = "428718406.726325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "updateTimer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordViewController.swift"
-            timestampString = "428714869.132908"
+            timestampString = "428718406.726325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "updateTimer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -110,6 +110,22 @@
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "init(ctrl:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bialoszewski/PlayerService.swift"
+            timestampString = "428718079.426163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "init(ctrl:recorderService:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

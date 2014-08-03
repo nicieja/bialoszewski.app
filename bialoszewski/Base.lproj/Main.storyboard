@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ah-UD-sr8">
-                                <rect key="frame" x="146" y="171" width="189" height="138"/>
+                                <rect key="frame" x="206" y="231" width="189" height="138"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="145"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -79,9 +79,9 @@
                                 <exclude reference="69K-ub-Yek"/>
                                 <exclude reference="hA2-zd-roU"/>
                                 <exclude reference="wIT-y6-4NQ"/>
-                                <exclude reference="GQX-GY-dHc"/>
                                 <exclude reference="9tG-LY-lx8"/>
                                 <exclude reference="Pkf-AA-18T"/>
+                                <exclude reference="GQX-GY-dHc"/>
                             </mask>
                         </variation>
                     </view>

@@ -25,6 +25,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     let timeFormat: String = "%02d:%02d"
     var timer: NSTimer!
     
+    let maxRecordingTime: Int = 300
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,37 +50,50 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func stopTimer() {
-        timer.invalidate()
+        timer?.invalidate()
         timer = nil
     }
     
     @IBAction func recordButtonTapped(sender: AnyObject) {
         if playerService?.player.playing {
-            playerService.stop()
+            stopPlaying()
         }
         
         if !recorderService.recorder.recording {
-            recorderService.record()
-            
-            recordButton.setTitle("Stop", forState: UIControlState.Normal)
-            timerLabel.text = NSString(format: timeFormat, 0, 0)
-            
-            startTimer()
+            startRecording()
         } else {
-            recorderService.stop()
-            dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path)
-            
-            recordButton.setTitle(nil, forState: UIControlState.Normal)
-            playButton.enabled = true
-            saveButton.enabled = true
-            
-            stopTimer()
+            stopRecording()
         }
+    }
+    
+    func startRecording() {
+        recorderService.record()
+        
+        recordButton.setTitle("Stop", forState: UIControlState.Normal)
+        timerLabel.text = NSString(format: timeFormat, 0, 0)
+        
+        startTimer()
+    }
+    
+    func stopRecording() {
+        recorderService.stop()
+        dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path)
+        
+        recordButton.setTitle(nil, forState: UIControlState.Normal)
+        playButton.enabled = true
+        saveButton.enabled = true
+        
+        stopTimer()
     }
     
     func updateTimer() {
         if recorderService.recorder.recording {
             currentTime = Int(recorderService.recorder.currentTime)
+            
+            // too long recordings handler
+            if currentTime > maxRecordingTime {
+                stopRecording()
+            }
         } else if playerService?.player.playing {
             currentTime = Int(playerService.player.duration - playerService.player.currentTime)
         }
@@ -109,17 +124,25 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBAction func playTapped(sender: UIButton) {
         if !recorderService.recorder.recording {
             if playerService.player.playing {
-                playerService.stop()
-                stopTimer()
-                
-                playButton.setTitle("Play", forState: UIControlState.Normal)
+                stopPlaying()
             } else {
-                playerService.play()
-                startTimer()
-                
-                playButton.setTitle("Pause", forState: UIControlState.Normal)
+                startPlaying()
             }
         }
+    }
+    
+    func stopPlaying() {
+        playerService.stop()
+        stopTimer()
+        
+        playButton.setTitle("Play", forState: UIControlState.Normal)
+    }
+    
+    func startPlaying() {
+        playerService.play()
+        startTimer()
+        
+        playButton.setTitle("Pause", forState: UIControlState.Normal)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
@@ -128,19 +151,25 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
         playerService = PlayerService(ctrl: self, recorderService: recorderService)
+        
+        if currentTime > maxRecordingTime {
+            saveAndResetToDefaults()
+        }
     }
     
     @IBAction func saveToDropbox(sender: UIButton) {
-        dropboxService.save()
-        
+        saveAndResetToDefaults()
         handler.alert("Thanks!", message: "Your recording was saved.", ok: "Yay!")
-        
+    }
+    
+    func saveAndResetToDefaults() {
+        dropboxService.save()
+
         saveButton.enabled = false
         playButton.enabled = false
         timerLabel.text = ""
         
         recorderService = RecorderService(ctrl: self)
-
     }
     
 }

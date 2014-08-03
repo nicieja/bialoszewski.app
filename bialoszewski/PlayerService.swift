@@ -20,6 +20,7 @@ class PlayerService {
     
     init(ctrl: RecordViewController, recorderService: RecorderService) {
         controller = ctrl
+        handler = ErrorService(ctrl: controller)
         
         player = AVAudioPlayer(contentsOfURL: recorderService.recorder.url, error: &error)
         errorHandler(error, message: "The player could not be initialized.")
@@ -37,7 +38,7 @@ class PlayerService {
     
     func errorHandler(error: NSError?, message: String) {
         if error {
-            handler.error("The file could not be saved.")
+            handler.error(message)
         }
     }
     
