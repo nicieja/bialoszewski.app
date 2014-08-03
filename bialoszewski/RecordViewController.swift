@@ -15,6 +15,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBOutlet var playButton: UIButton!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var reminderLabel: UILabel!
     
     var dropboxService: DropboxService!
     var recorderService: RecorderService!
@@ -32,6 +33,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         playButton.enabled = false
         saveButton.enabled = false
+        timerLabel.hidden = true
+        reminderLabel.hidden = true
         
         recorderService = RecorderService(ctrl: self)
         handler = ErrorService(ctrl: self)
@@ -69,8 +72,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func startRecording() {
         recorderService.record()
         
-        recordButton.setTitle("Stop", forState: UIControlState.Normal)
         timerLabel.text = NSString(format: timeFormat, 0, 0)
+        timerLabel.hidden = false
+        reminderLabel.hidden = false
+        recordButton.setTitle("Stop", forState: UIControlState.Normal)
         
         startTimer()
     }
@@ -87,13 +92,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func updateTimer() {
-        var label: NSString = ""
-        if recorderService.recorder.recording || playerService?.player.playing  {
+        if recorderService.recorder.recording || playerService?.player.playing {
             if recorderService.recorder.recording {
                 currentTime = Int(recorderService.recorder.currentTime)
                 
                 // too long recordings handler
-                if currentTime > maxRecordingTime {
+                if currentTime? > maxRecordingTime {
                     stopRecording()
                 }
             } else if playerService?.player.playing {
@@ -107,10 +111,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             }
         
             var time = calculateTimeAndMinutes(currentTime)
-            label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
+            var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
+            timerLabel.text = label
         }
-        
-        timerLabel.text = label
     }
     
     func calculateTimeAndMinutes(time: Int) -> [String: Int] {
@@ -156,7 +159,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
         playerService = PlayerService(ctrl: self, recorderService: recorderService)
         
-        if currentTime > maxRecordingTime {
+        if currentTime? > maxRecordingTime {
             saveAndResetToDefaults()
         }
     }
@@ -172,8 +175,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = false
         playButton.enabled = false
         currentTime = nil
-        
+        timerLabel.hidden = true
+        reminderLabel.hidden = true
         playerService = nil
+        
         recorderService = RecorderService(ctrl: self)
     }
     
