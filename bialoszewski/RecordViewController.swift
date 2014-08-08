@@ -11,11 +11,11 @@ import AVFoundation
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
-    @IBOutlet var recordButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var reminderLabel: UILabel!
+    @IBOutlet var recordButton: RecordIcon!
     
     var dropboxService: DropboxService!
     var recorderService: RecorderService!
@@ -42,6 +42,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     override func viewDidAppear(animated: Bool) {
         dropboxService = DropboxService(ctrl: self)
+        recordButton.setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +50,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func startTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1/60, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
@@ -68,13 +69,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             stopRecording()
         }
     }
-    
+        
     func startRecording() {
         recorderService.record()
-        
-        showTimer()
-        recordButton.setTitle("Stop", forState: UIControlState.Normal)
-        
+            
+        showTimer()        
         startTimer()
     }
     
@@ -82,7 +81,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         recorderService.stop()
         dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path)
         
-        recordButton.setTitle(nil, forState: UIControlState.Normal)
         playButton.enabled = true
         saveButton.enabled = true
         
@@ -93,6 +91,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if recorderService.recorder.recording || playerService?.player.playing {
             if recorderService.recorder.recording {
                 currentTime = Int(recorderService.recorder.currentTime)
+
+                recordButton.animateCircleLayer(CGFloat(recorderService.recorder.currentTime))
                 
                 // too long recordings handler
                 if currentTime? > maxRecordingTime {

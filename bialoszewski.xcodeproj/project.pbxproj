@@ -11,6 +11,8 @@
 		04031B93197C514C00A33B8C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04031B92197C514C00A33B8C /* RecordViewController.swift */; };
 		04129841198D86DA00BDEDAD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04129840198D86DA00BDEDAD /* Info.plist */; };
 		04129849198D997F00BDEDAD /* DropboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04129848198D997F00BDEDAD /* DropboxService.swift */; };
+		04216692199574E800271778 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04216691199574E800271778 /* Podfile */; };
+		04216694199575FB00271778 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04216693199575FB00271778 /* Dropbox.framework */; };
 		0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */; };
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
@@ -26,7 +28,6 @@
 		048FE928198DA10B00E208EB /* RecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE927198DA10B00E208EB /* RecorderService.swift */; };
 		048FE92A198DA6FE00E208EB /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE929198DA6FE00E208EB /* PlayerService.swift */; };
 		04F88DAA1992452500571AB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F88DA91992452500571AB6 /* Images.xcassets */; };
-		04F88DAC1992456A00571AB6 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F88DAB1992456A00571AB6 /* Dropbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		04031B92197C514C00A33B8C /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		04129840198D86DA00BDEDAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04129848198D997F00BDEDAD /* DropboxService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxService.swift; sourceTree = "<group>"; };
+		04216691199574E800271778 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		04216693199575FB00271778 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = bialoszewski/Dropbox.framework; sourceTree = "<group>"; };
 		0437E6BE197C4B6E00C0BFEB /* bialoszewski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bialoszewski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0437E6C8197C4B6E00C0BFEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +66,6 @@
 		048FE927198DA10B00E208EB /* RecorderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderService.swift; sourceTree = "<group>"; };
 		048FE929198DA6FE00E208EB /* PlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 		04F88DA91992452500571AB6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bialoszewski/Images.xcassets; sourceTree = "<group>"; };
-		04F88DAB1992456A00571AB6 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = bialoszewski/Dropbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,11 +76,11 @@
 				045A569C198D38D700F4BC95 /* libz.dylib in Frameworks */,
 				045A569A198D38CD00F4BC95 /* libc++.dylib in Frameworks */,
 				045A5698198D38B800F4BC95 /* QuartzCore.framework in Frameworks */,
+				04216694199575FB00271778 /* Dropbox.framework in Frameworks */,
 				045A5696198D389900F4BC95 /* SystemConfiguration.framework in Frameworks */,
 				045A5694198D388000F4BC95 /* Security.framework in Frameworks */,
 				045A5692198D386D00F4BC95 /* CFNetwork.framework in Frameworks */,
 				04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */,
-				04F88DAC1992456A00571AB6 /* Dropbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +151,7 @@
 			children = (
 				045A568E198D383200F4BC95 /* bialoszewski-Bridging-Header.h */,
 				0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */,
+				04216691199574E800271778 /* Podfile */,
 				0437E6C7197C4B6E00C0BFEB /* Main.storyboard */,
 				04129840198D86DA00BDEDAD /* Info.plist */,
 			);
@@ -180,9 +183,9 @@
 				045A5699198D38CD00F4BC95 /* libc++.dylib */,
 				045A5697198D38B800F4BC95 /* QuartzCore.framework */,
 				045A5695198D389900F4BC95 /* SystemConfiguration.framework */,
+				04216693199575FB00271778 /* Dropbox.framework */,
 				045A5693198D388000F4BC95 /* Security.framework */,
 				045A5691198D386D00F4BC95 /* CFNetwork.framework */,
-				04F88DAB1992456A00571AB6 /* Dropbox.framework */,
 				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -278,6 +281,7 @@
 			files = (
 				04F88DAA1992452500571AB6 /* Images.xcassets in Resources */,
 				04129841198D86DA00BDEDAD /* Info.plist in Resources */,
+				04216692199574E800271778 /* Podfile in Resources */,
 				0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
