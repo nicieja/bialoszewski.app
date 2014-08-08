@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Kamil Nicieja. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 class RecorderService {

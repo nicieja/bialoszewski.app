@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Kamil Nicieja. All rights reserved.
 //
 
-import Foundation
-
 class DropboxService {
     
     var filesystem: DBFilesystem!
