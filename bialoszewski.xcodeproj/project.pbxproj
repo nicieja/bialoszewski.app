@@ -13,9 +13,9 @@
 		04129849198D997F00BDEDAD /* DropboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04129848198D997F00BDEDAD /* DropboxService.swift */; };
 		0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */; };
 		0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6C7197C4B6E00C0BFEB /* Main.storyboard */; };
-		0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437E6CA197C4B6E00C0BFEB /* Images.xcassets */; };
 		0437E6D7197C4B6E00C0BFEB /* bialoszewskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */; };
-		045A568C198D375300F4BC95 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A568B198D375300F4BC95 /* Dropbox.framework */; };
+		044BB4DA198DFF78004E443C /* RecordIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BB4D9198DFF78004E443C /* RecordIconLayer.swift */; };
+		044BB4DC198E00A1004E443C /* RecordIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BB4DB198E00A1004E443C /* RecordIcon.swift */; };
 		045A5692198D386D00F4BC95 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5691198D386D00F4BC95 /* CFNetwork.framework */; };
 		045A5694198D388000F4BC95 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5693198D388000F4BC95 /* Security.framework */; };
 		045A5696198D389900F4BC95 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045A5695198D389900F4BC95 /* SystemConfiguration.framework */; };
@@ -25,6 +25,8 @@
 		048FE926198D9E8000E208EB /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE925198D9E8000E208EB /* ErrorService.swift */; };
 		048FE928198DA10B00E208EB /* RecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE927198DA10B00E208EB /* RecorderService.swift */; };
 		048FE92A198DA6FE00E208EB /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FE929198DA6FE00E208EB /* PlayerService.swift */; };
+		04F88DAA1992452500571AB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F88DA91992452500571AB6 /* Images.xcassets */; };
+		04F88DAC1992456A00571AB6 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F88DAB1992456A00571AB6 /* Dropbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,11 +47,11 @@
 		0437E6BE197C4B6E00C0BFEB /* bialoszewski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bialoszewski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6C3197C4B6E00C0BFEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0437E6C8197C4B6E00C0BFEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0437E6CA197C4B6E00C0BFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bialoszewski/Images.xcassets; sourceTree = "<group>"; };
 		0437E6D0197C4B6E00C0BFEB /* bialoszewskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bialoszewskiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0437E6D5197C4B6E00C0BFEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0437E6D6197C4B6E00C0BFEB /* bialoszewskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bialoszewskiTests.swift; sourceTree = "<group>"; };
-		045A568B198D375300F4BC95 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = "../../Downloads/dropbox-ios-sync-sdk-3.0.1/Dropbox.framework"; sourceTree = "<group>"; };
+		044BB4D9198DFF78004E443C /* RecordIconLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordIconLayer.swift; sourceTree = "<group>"; };
+		044BB4DB198E00A1004E443C /* RecordIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordIcon.swift; sourceTree = "<group>"; };
 		045A568E198D383200F4BC95 /* bialoszewski-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bialoszewski-Bridging-Header.h"; sourceTree = "<group>"; };
 		045A5691198D386D00F4BC95 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		045A5693198D388000F4BC95 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -60,6 +62,8 @@
 		048FE925198D9E8000E208EB /* ErrorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
 		048FE927198DA10B00E208EB /* RecorderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderService.swift; sourceTree = "<group>"; };
 		048FE929198DA6FE00E208EB /* PlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		04F88DA91992452500571AB6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bialoszewski/Images.xcassets; sourceTree = "<group>"; };
+		04F88DAB1992456A00571AB6 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = bialoszewski/Dropbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,7 @@
 				045A5694198D388000F4BC95 /* Security.framework in Frameworks */,
 				045A5692198D386D00F4BC95 /* CFNetwork.framework in Frameworks */,
 				04031B91197C4D9700A33B8C /* AVFoundation.framework in Frameworks */,
-				045A568C198D375300F4BC95 /* Dropbox.framework in Frameworks */,
+				04F88DAC1992456A00571AB6 /* Dropbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,8 @@
 				04129848198D997F00BDEDAD /* DropboxService.swift */,
 				048FE927198DA10B00E208EB /* RecorderService.swift */,
 				048FE929198DA6FE00E208EB /* PlayerService.swift */,
+				044BB4D9198DFF78004E443C /* RecordIconLayer.swift */,
+				044BB4DB198E00A1004E443C /* RecordIcon.swift */,
 				048FE925198D9E8000E208EB /* ErrorService.swift */,
 			);
 			name = Services;
@@ -176,7 +182,7 @@
 				045A5695198D389900F4BC95 /* SystemConfiguration.framework */,
 				045A5693198D388000F4BC95 /* Security.framework */,
 				045A5691198D386D00F4BC95 /* CFNetwork.framework */,
-				045A568B198D375300F4BC95 /* Dropbox.framework */,
+				04F88DAB1992456A00571AB6 /* Dropbox.framework */,
 				04031B90197C4D9700A33B8C /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -185,7 +191,7 @@
 		0486B21719884FDF00D97C87 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				0437E6CA197C4B6E00C0BFEB /* Images.xcassets */,
+				04F88DA91992452500571AB6 /* Images.xcassets */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -270,9 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F88DAA1992452500571AB6 /* Images.xcassets in Resources */,
 				04129841198D86DA00BDEDAD /* Info.plist in Resources */,
 				0437E6C9197C4B6E00C0BFEB /* Main.storyboard in Resources */,
-				0437E6CB197C4B6E00C0BFEB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				048FE92A198DA6FE00E208EB /* PlayerService.swift in Sources */,
+				044BB4DA198DFF78004E443C /* RecordIconLayer.swift in Sources */,
 				048FE928198DA10B00E208EB /* RecorderService.swift in Sources */,
+				044BB4DC198E00A1004E443C /* RecordIcon.swift in Sources */,
 				048FE926198D9E8000E208EB /* ErrorService.swift in Sources */,
 				04129849198D997F00BDEDAD /* DropboxService.swift in Sources */,
 				0437E6C4197C4B6E00C0BFEB /* AppDelegate.swift in Sources */,
@@ -414,14 +422,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
 					"/Users/thion/Downloads/dropbox-ios-sync-sdk-3.0.1",
+					"$(PROJECT_DIR)/bialoszewski",
 				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -433,14 +446,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/thion/Downloads/dropbox-ios-sdk-1.3.11",
 					"/Users/thion/Downloads/dropbox-ios-sync-sdk-3.0.1",
+					"$(PROJECT_DIR)/bialoszewski",
 				);
 				INFOPLIST_FILE = bialoszewski/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "bialoszewski/bialoszewski-Bridging-Header.h";
 			};
 			name = Release;
