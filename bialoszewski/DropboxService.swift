@@ -22,7 +22,7 @@ class DropboxService {
         handler = ErrorService(ctrl: controller)
         
         if !DBAccountManager.sharedManager().linkedAccount {
-            DBAccountManager.sharedManager().linkFromController(controller)
+            linkToDropbox()
         } else {
             setupDropboxFilesystem()
         }
@@ -31,6 +31,18 @@ class DropboxService {
     func setupDropboxFilesystem() {
         filesystem = DBFilesystem(account: DBAccountManager.sharedManager().linkedAccount)
         DBFilesystem.setSharedFilesystem(filesystem)
+    }
+    
+    func linkToDropbox() {
+        var delta: Int64 = 1 * Int64(NSEC_PER_SEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            if !DBAccountManager.sharedManager().linkedAccount && !(self.controller.presentedViewController is UINavigationController) {
+                DBAccountManager.sharedManager().linkFromController(self.controller)
+            }
+            self.linkToDropbox()
+        })
     }
     
     func setupFile(name: String, path: String) {
