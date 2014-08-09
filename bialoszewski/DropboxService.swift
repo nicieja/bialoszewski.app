@@ -14,6 +14,9 @@ class DropboxService {
     var localPath: String!
     var file: DBFile!
     
+    var folder: String!
+    let dateFormat: String =  "yyyy-MM-dd"
+    
     let controller: RecordViewController!
     let handler: ErrorService!
     
@@ -47,7 +50,16 @@ class DropboxService {
     
     func setupFile(name: String, path: String) {
         localPath = path
-        dropboxPath = DBPath.root().childPath(name)
+        setFolderName()
+        dropboxPath = DBPath.root().childPath("\(folder)/\(name)")
+    }
+    
+    func setFolderName() {
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        
+        var timestamp: NSDate = NSDate.date()
+        folder = dateFormatter.stringFromDate(timestamp)
     }
     
     func fetchOrCreate() {
