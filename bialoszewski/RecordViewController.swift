@@ -74,8 +74,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
     func startRecording() {
         recorderService.record()
-            
-        showTimer()        
+        
+        showTimer()
+        
+        playButton.enabled = false
+        saveButton.enabled = false
+        
         startTimer()
     }
     
@@ -83,17 +87,16 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         recorderService.stop()
         dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path!)
         
-        playButton.enabled = true
-        saveButton.enabled = true
+        transitionCrossDissolve({
+            self.playButton.enabled = true
+            self.saveButton.enabled = true
+            }, {})
         
         reminderToSave.hidden = false
         
         transitionCrossDissolve({
-            self.reminderToSave.alpha = 0
-            }, completion: {
-                finished in
-                self.reminderToSave.alpha = 1
-        })
+            self.reminderToSave.hidden = false
+            }, completion: {})
         
         stopTimer()
     }
@@ -125,12 +128,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 timerLabel.text = label
                 
                 if currentTime > maxRecordingTime - 30 {
-                    transitionCrossDissolve({
-                        self.timerLabel.alpha = 0
-                        self.timerLabel.textColor = UIColor.redColor()
-                    }, {
-                        self.timerLabel.alpha = 1
-                    })
+                    self.timerLabel.textColor = UIColor.redColor()
                 }
             }
         }
@@ -160,6 +158,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func stopPlaying() {
         playerService.stop()
+        saveButton.enabled = true
         stopTimer()
         
         playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
@@ -167,12 +166,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func startPlaying() {
         playerService.play()
+        saveButton.enabled = false
         startTimer()
         
         playButton.setTitle("Pauza", forState: UIControlState.Normal)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
+        saveButton.enabled = true
         playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
     }
     
@@ -211,8 +212,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func fadeTimer(show: Bool) {
         transitionCrossDissolve({
-            self.reminderLabel.alpha = show ? 0 : 1
-            self.timerLabel.alpha = show ? 0 : 1
             
             if show {
                 self.timerLabel.text = NSString(format: self.timeFormat, 0, 0)
@@ -222,11 +221,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             
             self.reminderLabel.hidden = !show
             self.timerLabel.hidden = !show
-        }, completion: {
-            finished in
-            self.reminderLabel.alpha = show ? 1 : 0
-            self.timerLabel.alpha = show ? 1 : 0
-        })
+        }, completion: {})
     }
     
     func transitionCrossDissolve(animations: () -> (), completion: () -> ()) {
