@@ -20,7 +20,7 @@ class RecorderService {
     let controller: RecordViewController!
     let handler: ErrorService!
     
-    let dateFormat: String =  "HH:mm:ss"
+    let dateFormat: String =  "HH:mm"
     var error: NSError?
     
     init(ctrl: RecordViewController) {
@@ -34,7 +34,7 @@ class RecorderService {
         initializeSession()
         
         recorder = AVAudioRecorder(URL: outputFileURL, settings: settings, error: &error)
-        errorHandler(error, message: "The recorder could not be initialized.")
+        errorHandler(error, message: "Nagrywanie nie mogło zostać rozpoczęte.")
         
         recorder.delegate = controller;
         recorder.meteringEnabled = true;
@@ -43,7 +43,7 @@ class RecorderService {
     
     func initializeSession() {
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
-        errorHandler(error, message: "The session could not be initialized.")
+        errorHandler(error, message: "Sesja nagrywania nie mogła zostać rozpoczęta.")
     }
     
     func setOutputFileURL() {
@@ -70,7 +70,7 @@ class RecorderService {
     
     func record() {
         session.setActive(true, error: &error)
-        errorHandler(error, message: "The recording session could not be modified.")
+        errorHandler(error, message: "Sesja nagrywania nie mogła zostać zmodyfikowana.")
         
         recorder.record()
     }
@@ -79,7 +79,7 @@ class RecorderService {
         recorder.stop()
 
         session.setActive(false, error: &error)
-        errorHandler(error, message: "The recording session could not be modified.")
+        errorHandler(error, message: "Sesja nagrywania nie mogła zostać zmodyfikowana.")
     }
     
     func errorHandler(error: NSError?, message: String) {

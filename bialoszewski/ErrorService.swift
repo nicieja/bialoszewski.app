@@ -15,7 +15,7 @@ class ErrorService {
     }
     
     func error(message: String) {
-        alert("Ups", message: message, ok: "Try again")
+        alert("Ups", message: message, ok: "Spróbuj ponownie")
     }
     
     func alert(title: String, message: String, ok: String) {

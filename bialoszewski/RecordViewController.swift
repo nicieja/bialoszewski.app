@@ -15,6 +15,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var reminderLabel: UILabel!
+    @IBOutlet var reminderToSave: UILabel!
     @IBOutlet var recordButton: RecordIcon!
     
     var dropboxService: DropboxService!
@@ -35,6 +36,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = false
         timerLabel.hidden = true
         reminderLabel.hidden = true
+        reminderToSave.hidden = true
         
         recorderService = RecorderService(ctrl: self)
         handler = ErrorService(ctrl: self)
@@ -83,6 +85,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         playButton.enabled = true
         saveButton.enabled = true
+        
+        reminderToSave.hidden = false
+        
+        transitionCrossDissolve({
+            self.reminderToSave.alpha = 0
+            }, completion: {
+                finished in
+                self.reminderToSave.alpha = 1
+        })
         
         stopTimer()
     }
@@ -151,18 +162,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playerService.stop()
         stopTimer()
         
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
     }
     
     func startPlaying() {
         playerService.play()
         startTimer()
         
-        playButton.setTitle("Pause", forState: UIControlState.Normal)
+        playButton.setTitle("Pauza", forState: UIControlState.Normal)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
@@ -175,7 +186,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     @IBAction func saveToDropbox(sender: UIButton) {
         saveAndResetToDefaults()
-        handler.alert("Thanks!", message: "Your recording was saved.", ok: "Yay!")
     }
     
     func saveAndResetToDefaults() {
@@ -183,6 +193,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
 
         saveButton.enabled = false
         playButton.enabled = false
+        reminderToSave.hidden = true
         currentTime = nil
         hideTimer()
         playerService = nil

@@ -72,17 +72,17 @@ class DropboxService {
     
     func openDropboxFile() {
         file = filesystem.openFile(dropboxPath, error: &error)
-        errorHandler(error, message: "The file could not be opened.")
+        errorHandler(error, message: "Plik nie mógł zostać otworzony.")
     }
     
     func createDropboxFile() {
         file = filesystem.createFile(dropboxPath, error: &error)
-        errorHandler(error, message: "The file could not be created.")
+        errorHandler(error, message: "Plik nie mógł zostać utworzony.")
     }
     
     func saveToFile() {
         file.writeContentsOfFile(localPath, shouldSteal: true, error: &error)
-        errorHandler(error, message: "The file could not be saved.")
+        errorHandler(error, message: "Plik nie mógł zostać zapisany.")
     }
     
     func save() {

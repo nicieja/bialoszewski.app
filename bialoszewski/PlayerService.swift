@@ -22,7 +22,7 @@ class PlayerService {
         handler = ErrorService(ctrl: controller)
         
         player = AVAudioPlayer(contentsOfURL: recorderService.recorder.url, error: &error)
-        errorHandler(error, message: "The player could not be initialized.")
+        errorHandler(error, message: "Odtwarzacz nie może zostać uruchomiony.")
     }
     
     func play() {
