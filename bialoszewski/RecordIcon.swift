@@ -32,7 +32,7 @@ class RecordIcon: UIButton {
     }
 
     func animateCircleLayer(progress: CGFloat) {
-        var newAngle: CGFloat = progress / 18000 * 3600
+        var newAngle: CGFloat = progress / 18000 * 360
 
         UIView.animateWithDuration(1/60,
             animations: {

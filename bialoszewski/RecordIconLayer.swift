@@ -17,8 +17,12 @@ class RecordIconLayer: CALayer {
     var strokeWidth: CGFloat!
     var strokeColor: UIColor!
 
-    init(layer: AnyObject) {
+    override init(layer: AnyObject) {
         super.init(layer: layer)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func drawInContext(ctx: CGContextRef) {

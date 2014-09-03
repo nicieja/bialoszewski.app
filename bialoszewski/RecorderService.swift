@@ -25,6 +25,7 @@ class RecorderService {
     
     init(ctrl: RecordViewController) {
         controller = ctrl
+        handler = ErrorService(ctrl: controller)
         
         setFileName()
         setOutputFileURL()
@@ -47,7 +48,7 @@ class RecorderService {
     
     func setOutputFileURL() {
         let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var pathComponents = [paths.lastObject, filename]
+        var pathComponents = [paths.lastObject as String, filename as String]
         
         outputFileURL = NSURL.fileURLWithPathComponents(pathComponents)
     }
@@ -75,14 +76,14 @@ class RecorderService {
     }
     
     func stop() {
+        recorder.stop()
+
         session.setActive(false, error: &error)
         errorHandler(error, message: "The recording session could not be modified.")
-
-        recorder.stop()
     }
     
     func errorHandler(error: NSError?, message: String) {
-        if error {
+        if (error != nil) {
             handler.error(message)
         }
     }

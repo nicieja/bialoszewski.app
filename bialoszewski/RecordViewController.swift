@@ -59,7 +59,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func recordButtonTapped(sender: AnyObject) {
-        if playerService?.player.playing {
+        if (playerService?.player.playing != nil) {
             stopPlaying()
         }
         
@@ -79,7 +79,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func stopRecording() {
         recorderService.stop()
-        dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path)
+        dropboxService.setupFile(recorderService.filename, path: recorderService.outputFileURL.path!)
         
         playButton.enabled = true
         saveButton.enabled = true
@@ -88,7 +88,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func updateTimer() {
-        if recorderService.recorder.recording || playerService?.player.playing {
+        if (recorderService.recorder.recording || playerService?.player.playing != nil) {
             if recorderService.recorder.recording {
                 currentTime = Int(recorderService.recorder.currentTime)
 
@@ -98,7 +98,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 if currentTime? > maxRecordingTime {
                     stopRecording()
                 }
-            } else if playerService?.player.playing {
+            } else if (playerService?.player.playing != nil) {
                 currentTime = Int(playerService.player.duration - playerService.player.currentTime)
             }
             

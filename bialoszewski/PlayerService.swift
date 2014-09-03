@@ -36,7 +36,7 @@ class PlayerService {
     }
     
     func errorHandler(error: NSError?, message: String) {
-        if error {
+        if (error != nil) {
             handler.error(message)
         }
     }
