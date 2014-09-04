@@ -122,7 +122,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 currentTime = Int(playerService.player.duration)
             }
         
-            if currentTime > 0 {
+            if currentTime >= 0 {
                 var time = calculateTimeAndMinutes(currentTime)
                 var label = NSString(format: timeFormat, time["minutes"]!, time["seconds"]!)
                 timerLabel.text = label
@@ -158,8 +158,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func stopPlaying() {
         playerService.stop()
+        
         saveButton.enabled = true
         stopTimer()
+        
+        transitionCrossDissolve({
+            self.currentTime = 0
+            self.updateTimer()
+        }, completion: {})
         
         playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
     }

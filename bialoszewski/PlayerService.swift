@@ -33,6 +33,7 @@ class PlayerService {
     
     func stop() {
         player.stop()
+        player.currentTime = 0
     }
     
     func errorHandler(error: NSError?, message: String) {
