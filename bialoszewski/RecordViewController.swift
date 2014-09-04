@@ -161,7 +161,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = true
         stopTimer()
         
-        playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
+        playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
     }
     
     func startPlaying() {
@@ -169,12 +169,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = false
         startTimer()
         
-        playButton.setTitle("Pauza", forState: UIControlState.Normal)
+        playButton.setTitle("Stop", forState: UIControlState.Normal)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
         saveButton.enabled = true
-        playButton.setTitle("Odtwórz", forState: UIControlState.Normal)
+        playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
