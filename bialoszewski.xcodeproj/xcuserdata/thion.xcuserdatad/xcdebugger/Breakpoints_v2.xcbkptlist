@@ -120,13 +120,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bialoszewski/RecordIcon.swift"
-            timestampString = "429038854.552191"
+            timestampString = "431544995.378943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "animateCircleLayer(_:)"
-            landmarkType = "5">
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "RecordIcon"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

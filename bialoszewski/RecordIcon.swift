@@ -45,4 +45,8 @@ class RecordIcon: UIButton {
             completion: nil)
         angle = newAngle
     }
+    
+    func reset() {
+        circleLayer.removeFromSuperlayer()
+    }
 }

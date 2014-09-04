@@ -206,6 +206,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playButton.enabled = false
         reminderToSave.hidden = true
         voiceLabel.hidden = true
+        recordButton.reset()
+        recordButton.setup()
         currentTime = nil
         hideTimer()
         playerService = nil
