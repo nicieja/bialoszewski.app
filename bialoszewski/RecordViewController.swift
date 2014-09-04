@@ -16,6 +16,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var reminderLabel: UILabel!
     @IBOutlet var reminderToSave: UILabel!
+    @IBOutlet var voiceLabel: UILabel!
     @IBOutlet var recordButton: RecordIcon!
     
     var dropboxService: DropboxService!
@@ -37,6 +38,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         timerLabel.hidden = true
         reminderLabel.hidden = true
         reminderToSave.hidden = true
+        voiceLabel.hidden = true
         
         recorderService = RecorderService(ctrl: self)
         handler = ErrorService(ctrl: self)
@@ -93,9 +95,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             }, {})
         
         reminderToSave.hidden = false
+        voiceLabel.hidden = false
         
         transitionCrossDissolve({
             self.reminderToSave.hidden = false
+            self.voiceLabel.hidden = false
             }, completion: {})
         
         stopTimer()
@@ -201,6 +205,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         saveButton.enabled = false
         playButton.enabled = false
         reminderToSave.hidden = true
+        voiceLabel.hidden = true
         currentTime = nil
         hideTimer()
         playerService = nil
