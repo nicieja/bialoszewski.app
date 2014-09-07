@@ -20,7 +20,7 @@ class RecorderService {
     let controller: RecordViewController!
     let handler: ErrorService!
     
-    let dateFormat: String =  "HH:mm"
+    let dateFormat: String =  "HH:mm:ss"
     var error: NSError?
     
     init(ctrl: RecordViewController) {
