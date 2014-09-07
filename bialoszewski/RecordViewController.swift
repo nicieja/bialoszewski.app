@@ -100,8 +100,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         transitionCrossDissolve({
             self.reminderToSave.hidden = false
             self.voiceLabel.hidden = false
+            
+            self.recordButton.reset()
             }, completion: {})
         
+        self.recordButton.setup()
         stopTimer()
     }
     
@@ -164,6 +167,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playerService.stop()
         
         saveButton.enabled = true
+        recordButton.enabled = true
         stopTimer()
         
         transitionCrossDissolve({
@@ -176,19 +180,28 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func startPlaying() {
         playerService.play()
-        saveButton.enabled = false
-        startTimer()
         
+        transitionCrossDissolve({
+            self.saveButton.enabled = false
+            self.recordButton.enabled = false
+        }, completion: {})
+
+        
+        startTimer()
         playButton.setTitle("Stop", forState: UIControlState.Normal)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
         saveButton.enabled = true
+        recordButton.enabled = true
         playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
         playerService = PlayerService(ctrl: self, recorderService: recorderService)
+        
+        recordButton.reset()
+        recordButton.setup()
         
         if currentTime? > maxRecordingTime {
             saveAndResetToDefaults()
@@ -206,8 +219,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playButton.enabled = false
         reminderToSave.hidden = true
         voiceLabel.hidden = true
-        recordButton.reset()
-        recordButton.setup()
         currentTime = nil
         hideTimer()
         playerService = nil
