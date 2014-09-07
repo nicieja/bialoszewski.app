@@ -94,12 +94,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             self.saveButton.enabled = true
             }, {})
         
-        reminderToSave.hidden = false
-        voiceLabel.hidden = false
-        
         transitionCrossDissolve({
             self.reminderToSave.hidden = false
             self.voiceLabel.hidden = false
+            
+            self.reminderLabel.hidden = true
             
             self.recordButton.reset()
             }, completion: {})
@@ -192,9 +191,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Bool) {
-        saveButton.enabled = true
-        recordButton.enabled = true
-        playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
+        transitionCrossDissolve({
+            self.saveButton.enabled = true
+            self.recordButton.enabled = true
+            
+            self.playButton.setTitle("Odsłuchaj", forState: UIControlState.Normal)
+            }, completion: {})
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully: Bool) {
